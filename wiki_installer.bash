@@ -67,13 +67,10 @@ mv mediawiki-1.31.1/* /var/www/html/;
 #Elastica 
 tar -xzf Elastica-REL1_31-7019d96.tar.gz -C /var/www/html/extensions/;
 
-chgrp -R www-data /var/www/html/extensions/Elastica/;
-chmod -R 775 /var/www/html/extensions/Elastica/;
-
 #CirrusSearch extension for MediaWiki REL1_31 
 tar -xzf CirrusSearch-REL1_31-ad9a0d9.tar.gz -C /var/www/html/extensions/;
-chgrp -R www-data /var/www/html/extensions/CirrusSearch/;
-chmod -R 775 /var/www/html/extensions/CirrusSearch/;
+chgrp -R www-data /var/www/html/;
+chmod -R 775 /var/www/html/;
 
 ######## install elastic search from APT repository#######################################################################
 
