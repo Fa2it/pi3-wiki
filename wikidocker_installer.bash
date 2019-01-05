@@ -33,6 +33,7 @@ mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'wiki'@'localhost' IDENTIFIED BY 'wiki'
 
 #must reatart apache2
 service apache2 restart;
+service mysql restart;
 
 #Installing imagemagic;
 find /etc/apt/sources.list -type f -exec sed -i "s/deb-src http:\/\/archive.ubuntu.com\/ubuntu bionic main restricted/\#deb-src http:\/\/archive.ubuntu.com\/ubuntu bionic main restricted/g" {} \;

@@ -25,13 +25,14 @@ php -v > $PI3LOG;
 mysql -V &>> $PI3LOG;
 apache2 -v &>> $PI3LOG;
 node -v &>> $PI3LOG;  
-java -version &>> $PI3LOG;
-# cread db user
-mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'wiki'@'localhost' IDENTIFIED BY 'wiki'";
-  
+java -version &>> $PI3LOG; 
 
 #must reatart apache2
 service apache2 restart;
+service mysql restart;
+
+# cread db user
+mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'wiki'@'localhost' IDENTIFIED BY 'wiki'";
 
 #Installing imagemagic;
 find /etc/apt/sources.list -type f -exec sed -i "s/deb-src http:\/\/archive.ubuntu.com\/ubuntu bionic main restricted/\#deb-src http:\/\/archive.ubuntu.com\/ubuntu bionic main restricted/g" {} \;
