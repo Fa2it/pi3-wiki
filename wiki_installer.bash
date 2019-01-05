@@ -8,7 +8,11 @@ apt -y upgrade;
 mkdir /var/log/pi3/;
 PI3LOG=/var/log/pi3/result.log;
 touch $PI3LOG;
- 
+
+apt install -y mysql-server apache2 curl wget make nodejs composer vim vsftpd default-jre --no-install-recommends apt-utils git; 
+
+apt install -y php7.2 libapache2-mod-php7.2 php7.2-mysql php-apcu php7.2-curl php7.2-xml php7.2-mbstring php7.2-xmlrpc php7.2-intl php7.2-gd php7.2-zip php7.2-dev php-pear;
+
 wget https://www.imagemagick.org/download/ImageMagick.tar.gz;
 
 wget https://releases.wikimedia.org/mediawiki/1.31/mediawiki-1.31.1.tar.gz;
@@ -16,12 +20,6 @@ wget https://releases.wikimedia.org/mediawiki/1.31/mediawiki-1.31.1.tar.gz;
 wget https://extdist.wmflabs.org/dist/extensions/Elastica-REL1_31-7019d96.tar.gz;
 
 wget https://extdist.wmflabs.org/dist/extensions/CirrusSearch-REL1_31-ad9a0d9.tar.gz;
-
-
-
-apt install -y mysql-server apache2 curl wget make nodejs composer vim vsftpd default-jre; 
-
-apt install -y php7.2 libapache2-mod-php7.2 php7.2-mysql php-apcu php7.2-curl php7.2-xml php7.2-mbstring php7.2-xmlrpc php7.2-intl php7.2-gd php7.2-zip php7.2-dev php-pear;
 
 php -v > $PI3LOG;
 mysql -V &>> $PI3LOG;
