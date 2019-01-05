@@ -5,7 +5,9 @@ apt update;
 
 apt -y upgrade;
  
-mkdir /tmp/installer-report/;
+mkdir /var/log/pi3/;
+PI3LOG=/var/log/pi3/result.log;
+touch $PI3LOG;
  
 wget https://www.imagemagick.org/download/ImageMagick.tar.gz;
 
@@ -21,11 +23,11 @@ apt install -y mysql-server apache2 curl wget make nodejs composer vim vsftpd de
 
 apt install -y php7.2 libapache2-mod-php7.2 php7.2-mysql php-apcu php7.2-curl php7.2-xml php7.2-mbstring php7.2-xmlrpc php7.2-intl php7.2-gd php7.2-zip php7.2-dev php-pear;
 
-php -v > /tmp/installer-report/result.log;
-mysql -V &>> /tmp/installer-report/result.log;
-apache2 -v &>> /tmp/installer-report/result.log; 
-node -v &>> /tmp/installer-report/result.log;  
-java -version &>> /tmp/installer-report/result.log;
+php -v > $PI3LOG;
+mysql -V &>> $PI3LOG;
+apache2 -v &>> $PI3LOG;
+node -v &>> $PI3LOG;  
+java -version &>> $PI3LOG;
 # cread db user
 mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'wiki'@'localhost' IDENTIFIED BY 'wiki'";
   
@@ -52,12 +54,12 @@ make install;
 
 ldconfig /usr/local/lib;
 
-identify -version &>> /tmp/installer-report/imagemagic.log;
+identify -version &>> $PI3LOG;
 
 #make check | tee /tmp/installer-report/imagemagic.log;
  
 # install wiki 
-cd /tmp/pi3-wiki;
+cd ../;
 tar xvzf mediawiki-*.tar.gz;
 rm -R /var/www/html/*;
 mv mediawiki-1.31.1/* /var/www/html/;
